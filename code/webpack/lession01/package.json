@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "nodemon main.js",
-    "start": "pm2 start main.js --name web"
+    "start": "pm2 start main.js --name web",
+    "bundle": "webpack"
   },
   "keywords": [
     "Web"
@@ -30,6 +31,7 @@
     "thrift": "^0.11.0"
   },
   "devDependencies": {
+    "file-loader": "^4.2.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
   }
