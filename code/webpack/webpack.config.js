@@ -19,6 +19,18 @@ module.exports = {
                     limity : 204800,
                 }
             }
+        },{
+            test : /\.css$/,
+            use : [
+                'style-loader',
+                //'css-loader',
+                {
+                    loader : 'css-loader',
+                    options : {
+                        importLoaders : 2
+                    }
+                }
+            ]
         }]
     },
     mode : "production",  // production || development ||  none
