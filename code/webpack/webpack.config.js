@@ -23,13 +23,15 @@ module.exports = {
             test : /\.css$/,
             use : [
                 'style-loader',
-                //'css-loader',
                 {
                     loader : 'css-loader',
                     options : {
-                        importLoaders : 2
+                        importLoaders : 2,
+                        // 指定样式只在模块内生效
+                        modules:true,
                     }
-                }
+                },
+                'postcss-loader'
             ]
         }]
     },

@@ -2,4 +2,7 @@
     width : 350px;
     height: 150px;
     transform: translate(100px,100px);
+    transition: transform 1s;
 }
+
+.avatar:hover {transform: translate(200px,200px);}
