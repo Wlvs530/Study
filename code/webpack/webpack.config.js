@@ -1,12 +1,14 @@
 let path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     entry : {
         main : './client/src/js/test/index.js'
     },
     output : {
-        filename : 'bundle.js',
-        path : path.join(__dirname,'./client/dist/js')
+        filename : 'js/bundle.js',
+        path : path.join(__dirname,'./client/dist')
     },
     module : {
         rules : [{
@@ -35,5 +37,13 @@ module.exports = {
             ]
         }]
     },
+    plugins : [
+        new HtmlWebpackPlugin({
+            template : 'client/src/html/index.html'
+        }),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns:['html','js']
+        })
+    ],
     mode : "production",  // production || development ||  none
 }
