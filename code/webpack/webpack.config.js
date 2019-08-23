@@ -1,4 +1,5 @@
 let path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
@@ -9,6 +10,15 @@ module.exports = {
     output : {
         filename : 'js/bundle.js',
         path : path.join(__dirname,'./client/dist')
+    },
+    mode : 'development',  // production || development ||  none
+    devtool : 'cheap-module-eval-source-map',
+    devServer : {
+        contentBase : './client',
+        open : true,
+        port : 80,
+        hot: true,
+        hotOnly : true
     },
     module : {
         rules : [{
@@ -39,11 +49,13 @@ module.exports = {
     },
     plugins : [
         new HtmlWebpackPlugin({
-            template : 'client/src/html/index.html'
+            title : 'WebApp',
+            filename : 'index.html',
+            template : path.join(__dirname,'client/src','index.html'),
         }),
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns:['html','js']
-        })
-    ],
-    mode : "production",  // production || development ||  none
+            cleanOnceBeforeBuildPatterns:['*']
+        }),
+        new webpack.HotModuleReplacementPlugin()
+    ]
 }
