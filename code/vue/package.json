@@ -6,7 +6,7 @@
     "test": "nodemon main.js",
     "start": "pm2 start main.js --name web",
     "dev": "webpack-dev-server",
-    "bundle": "webpack --watch"
+    "build": "webpack --watch"
   },
   "keywords": [
     "Web"
