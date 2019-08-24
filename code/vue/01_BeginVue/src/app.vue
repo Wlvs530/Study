@@ -1,7 +1,9 @@
 <template>
     <div>
         First Vue App ! <br>
-        {{ Message }} <br>
+        <div v-cloak>
+            {{ Message }} <br>
+        </div>
         <input v-model="Message" />
         <ul>
             <li v-for="(Language,index) in Languages" :key="index">
@@ -23,5 +25,7 @@ export default {
 </script>
 
 <style scoped>
-
+    [v-cloak] {
+        display: none;
+    }
 </style>>
