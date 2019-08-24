@@ -4,7 +4,7 @@
         {{ Message }} <br>
         <input v-model="Message" />
         <ul>
-            <li v-for="Language in Languages" >
+            <li v-for="(Language,index) in Languages" :key="index">
                 {{ Language.name }}
             </li>
         </ul>
