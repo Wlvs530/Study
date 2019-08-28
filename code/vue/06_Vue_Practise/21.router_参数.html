@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Router Argv</title>
+
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.1.2/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/content">Content</router-link>
+        <router-link to="/contentid/99">ContentId</router-link>
+        <router-link to="/contentid2/22/33/44">ContentId2</router-link>
+        <router-link to="/contentid2/22-33-44">ContentId2</router-link>
+        <router-view></router-view>
+    </div>
+    
+    <script type="text/x-template" id="content">
+        <div>OK</div>
+    </script>
+
+    <script type="text/x-template" id="contentid">
+        <div>
+            {{ $route.params.id}}<br/>
+            <button @click="show">检查参数</button>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="contentid2">
+        <div>
+            {{ $route.params.id}}--{{ $route.params.id1}}--{{ $route.params.id2}}
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        const content = { template : '#content' };
+
+        const contentid = { 
+            template : '#contentid',
+            methods:{
+                show(){
+                    alert(this.$route.params.id);
+                }
+            }
+        };
+        
+        const contentid2 = { template : '#contentid2' };
+
+        let router= new VueRouter({ 
+            routes:[
+                {path:'/content',component:content},
+                {path:'/contentid/:id',component:contentid},
+                {path:'/contentid2/:id/:id1/:id2',component:contentid2},
+                {path:'/contentid2/:id-:id1-:id2',component:contentid2},
+            ]
+        });
+
+        let vue = new Vue({
+            el:'#app',
+            router
+        })
+    </script>
+</body>
+</html>

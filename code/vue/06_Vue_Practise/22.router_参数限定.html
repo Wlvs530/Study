@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Router Argv Limited</title>
+
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.1.2/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/contentid/99">ContentId99</router-link>
+        <router-link to="/contentid/999">ContentId999</router-link>
+        <router-link to="/contentid/aa">ContentIdaas</router-link>
+        <router-view></router-view>
+    </div>
+    
+    <script type="text/x-template" id="contentid">
+        <div>
+            {{ $route.params.id}}
+        </div>
+    </script>
+
+    <script type="text/javascript">
+
+        let router= new VueRouter({
+            routes:[
+                // 对路由参数进行正则限定(\\d{2})
+                {
+                    path:'/contentid/:id(\\d{2})',
+                    component:{ 
+                        template : '#contentid',
+                    }
+                },
+            ]
+        });
+
+        let vue = new Vue({
+            el:'#app',
+            router
+        })
+    </script>
+</body>
+</html>

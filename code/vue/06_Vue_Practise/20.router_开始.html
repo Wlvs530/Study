@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Router Begin</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.1.2/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/vue">Vue</router-link>
+        <router-link to="/html">Html5</router-link>
+        <router-link to="/world">World</router-link>
+        <router-view></router-view>
+    </div>
+    
+    <script tyep="text/javascript">
+        const vue = {template : '<div>Hello,Vue !<div>'};
+        const html = {template : '<div>Hello,Html5 !<div>'};
+        const world = {template : '<div>Hello,World !<div>'};
+        let router= new VueRouter({ 
+            routes:[
+                {path:'/vue',component:vue},
+                {path:'/html',component:html},
+                {path:'/world',component:world}
+            ]
+        });
+
+        new Vue({
+            el:'#app',
+            router
+        })
+    </script>
+</body>
+</html>

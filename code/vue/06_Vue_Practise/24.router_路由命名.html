@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Router Name</title>
+
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.1.2/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link :to="{name:'content',params:{id}}">ContentId</router-link>
+        <router-link :to="{name:'content',params:{id:id+10}}">ContentId+10</router-link>
+        <router-view></router-view>
+    </div>
+    
+    <script type="text/x-template" id="contentid">
+        <div>
+            <!--默认参数-->
+            <div>参数值:{{ $route.params.id}}</div>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+
+        let router= new VueRouter({ 
+            routes:[
+                {
+                    name:'content',
+                    path:'/contentid/:id',
+                    component:{ 
+                        template : '#contentid',
+                    }
+                },
+            ]
+        });
+
+        let vue = new Vue({
+            el:'#app',
+            data(){
+                return {
+                    id : 10
+                };
+            },
+            router
+        })
+    </script>
+</body>
+</html>
