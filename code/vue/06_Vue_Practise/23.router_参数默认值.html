@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Router Argv Default</title>
+
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.1.2/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/contentid">ContentId</router-link>
+        <router-link to="/contentid/999">ContentId999</router-link>
+        <router-view></router-view>
+    </div>
+    
+    <script type="text/x-template" id="contentid">
+        <div>
+            <!--默认参数-->
+            <div v-if="!$route.params.id">默认值:0</div>
+            <div v-else>参数值:{{ $route.params.id}}</div>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+
+        let router= new VueRouter({ 
+            routes:[
+                {
+                    // 不用?的时候，不带参数就无法进入路由，必须有?
+                    path:'/contentid/:id?',
+                    component:{ 
+                        template : '#contentid',
+                    }
+                },
+            ]
+        });
+
+        let vue = new Vue({
+            el:'#app',
+            router
+        })
+    </script>
+</body>
+</html>
