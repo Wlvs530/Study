@@ -7,7 +7,7 @@
     "start": "pm2 start main.js --name web",
     "dev": "webpack-dev-server",
     "build": "webpack --watch",
-    "ui" : "vue ui -H 192.168.70.250 -p 81"
+    "ui": "vue ui -H 192.168.1.12 -p 81"
   },
   "keywords": [
     "Web"
