@@ -6,7 +6,8 @@
     "test": "nodemon main.js",
     "start": "pm2 start main.js --name web",
     "dev": "webpack-dev-server",
-    "build": "webpack --watch"
+    "build": "webpack --watch",
+    "ui" : "vue ui -H 192.168.70.250 -p 81"
   },
   "keywords": [
     "Web"
@@ -14,6 +15,7 @@
   "author": "Drow.Deng",
   "license": "ISC",
   "dependencies": {
+    "@vue/cli": "^3.11.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
