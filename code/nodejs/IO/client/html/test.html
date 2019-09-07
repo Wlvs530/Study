@@ -29,7 +29,7 @@
                 <button v-if="Index == 0" class="beginBtn" @click="ClickBtn" v-text="BtnName"></button>
             </li>
         </ul>
-        <div @click="ClickBall" id="ball"></div><br/>
+        <div @click.prevent="ClickBall" id="ball"></div><br/>
     </div>
 
     <style>
@@ -234,7 +234,7 @@
 
         let _Ball = document.getElementById('ball');
 
-        let _InitSpeed = 100;
+        let _InitSpeed = 20;
         let _Speed = 0;
         let _Accelarate = -1;
         //let _Accelarate = 0;
