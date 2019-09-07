@@ -16,7 +16,7 @@ Session.prototype.Enter = function(){
     this.RegDisconnet();
     this.RegChangeName();
     this.RegEnterRoom();
-    this.RegBeginGame();
+    this.RegStartGame();
     this.RegStopGame();
     this.RegClickBall();
 }
@@ -59,13 +59,15 @@ Session.prototype.RegEnterRoom = function(){
     this.Socket.once('C2S_EnterRoom',(data)=>{
         let UserList = [];
         this.Acceptor.Sessions.forEach( (_Session) => {
-            let _User = {
-                UId:_Session.SessionId,
-                Name:_Session.Name,
-                Score:_Session.Score
+            if( _Session.Name != ''){
+                let _User = {
+                    UId:_Session.SessionId,
+                    Name:_Session.Name,
+                    Score:_Session.Score
+                }
+    
+                UserList.push(_User);
             }
-
-            UserList.push(_User);
         });
 
         let User = {
@@ -80,22 +82,26 @@ Session.prototype.RegEnterRoom = function(){
 }
 
 // BeginGame
-Session.prototype.RegBeginGame = function(data){
-    this.Socket.on('C2S_BeginGame',()=>{
-        this.Acceptor.ScoketIO.emit('BC_StartGame');
+Session.prototype.RegStartGame = function(data){
+    this.Socket.on('C2S_StartGame',()=>{
+        this.ScoketIO.emit('BC_StartGame');
     });
 }
 
 // StopGame
 Session.prototype.RegStopGame = function(data){
     this.Socket.on('C2S_StopGame',()=>{
-        this.Acceptor.ScoketIO.emit('BC_StopGame');
+        this.ScoketIO.emit('BC_StopGame');
     });
 }
 
 // ClickBall
 Session.prototype.RegClickBall = function(data){
-    // this.Socket.on('C2S_ClickBall',this.ClickBall);
+    this.Socket.on('C2S_ClickBall',()=>{
+        // Add 防止作弊代码
+        ++this.Score;
+        this.ScoketIO.emit('BC_ClickBall',this.SessionId);
+    });
 }
 
 // Print
