@@ -29,12 +29,12 @@ let config =
 	// Upload配置
 	path :
 	{
-		_DataPath : "../data",
-		_TempPath : "../data/temp",
-		_DownPath :　"../data/down",
-		_UploadPath : "../data/upload",
+		_DataPath : "data",
+		_TempPath : "data/temp",
+		_DownPath :　"data/down",
+		_UploadPath : "data/upload",
 	
-		_WeChatPath: "../data/WeChat",
+		_WeChatPath: "data/WeChat",
 	},
 }
 */
@@ -76,12 +76,12 @@ let config =
 	// Upload配置
 	path :
 	{
-		_DataPath : "../data",
-		_TempPath : "../data/temp",
-		_DownPath :　"../data/down",
-		_UploadPath : "../data/upload",
+		_DataPath : "data",
+		_TempPath : "data/temp",
+		_DownPath :　"data/down",
+		_UploadPath : "data/upload",
 	
-		_WeChatPath: "../data/WeChat",
+		_WeChatPath: "data/WeChat",
 	},
 }
 
