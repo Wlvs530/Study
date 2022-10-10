@@ -7,7 +7,7 @@
     "start": "pm2 start main.js --name web",
     "dev": "webpack-dev-server",
     "build": "webpack --watch",
-    "ui": "vue ui -H 192.168.1.12 -p 81"
+    "ui": "vue ui -H 192.168.10.250 -p 80"
   },
   "keywords": [
     "Web"
@@ -15,22 +15,8 @@
   "author": "Drow.Deng",
   "license": "ISC",
   "dependencies": {
-    "@vue/cli": "^3.11.0",
+    "@vue/cli": "^4.1.1",
     "vue": "^2.6.10"
   },
-  "devDependencies": {
-    "autoprefixer": "^9.6.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "html-webpack-plugin": "^3.2.0",
-    "postcss-loader": "^3.0.0",
-    "style-loader": "^1.0.0",
-    "url-loader": "^2.1.0",
-    "vue-loader": "^15.7.1",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
-  }
+  "devDependencies": {}
 }
