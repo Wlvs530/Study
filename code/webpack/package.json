@@ -19,7 +19,7 @@
     "app-module-path": "^2.2.0",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "ioredis": "^4.14.0",
     "log4js": "^3.0.5",
